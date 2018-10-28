@@ -28,6 +28,3 @@ q1 <- T
 #or 
 q1 <- FALSE
 typeof(q1)
-
-
-
