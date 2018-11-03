@@ -8,14 +8,17 @@ View(dataset)
 
 #Syntax of ifelse() is ifelse(condition,if True Output,else output)
 
+custommean <- function(x)
+{mean(x, na.rm = TRUE)}
+
 dataset$Age =  ifelse(is.na(dataset$Age),
-                      ave(dataset$Age, FUN = function(x) mean(x, na.rm = TRUE)),
+                      ave(dataset$Age, FUN = custommean),
                       dataset$Age)
 
 #We would replace missing cell in Salary Coumn with mean of Salary Column Data
 
 dataset$Salary =  ifelse(is.na(dataset$Salary),
-                      ave(dataset$Salary, FUN = function(x) mean(x, na.rm = TRUE)),
+                      ave(dataset$Salary, FUN = custommean),
                       dataset$Salary)
                       
 #Here is.NA(NA is function) tells us if the value of the function is missing or not
