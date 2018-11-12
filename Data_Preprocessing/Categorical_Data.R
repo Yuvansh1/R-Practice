@@ -1,27 +1,20 @@
-"In Data.csv we have 4 columns(Country, Age, Salary, Purchased) 
-  where Country Column has 3 categories:- France, Germany & Spain
-  & Purchased COlumn has 2 categories (Yes/No). Country & Purchased
-  columns are Categorical Variable"
+# Data Preprocessing
 
-#Importing the Dataset
+# Importing the dataset
 dataset = read.csv('Data.csv')
-View(dataset)
 
-#Encoding Categorical Data
+# Taking care of missing data
+dataset$Age = ifelse(is.na(dataset$Age),
+                     ave(dataset$Age, FUN = function(x) mean(x, na.rm = TRUE)),
+                     dataset$Age)
+dataset$Salary = ifelse(is.na(dataset$Salary),
+                        ave(dataset$Salary, FUN = function(x) mean(x, na.rm = TRUE)),
+                        dataset$Salary)
 
-#Encode Counrty COlumn Categories with 1,2,3
-
+# Encoding categorical data
 dataset$Country = factor(dataset$Country,
                          levels = c('France', 'Spain', 'Germany'),
                          labels = c(1, 2, 3))
-
-#This will change France, Germany & Spain to 1,2,3
-
-#Encode Purchased Column Categories to 1,2
-
 dataset$Purchased = factor(dataset$Purchased,
-                         levels = c('Yes', 'No'),
-                         labels = c(0,1))
-
-#This will change Yes,No to 1,0
-
+                           levels = c('No', 'Yes'),
+                           labels = c(0, 1))
