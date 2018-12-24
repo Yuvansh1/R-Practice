@@ -7,7 +7,7 @@ cnx = mysql.connector.connect(user='yuvansh'
                               ,database='***')
 cursor = cnx.cursor()
 
-QUERY = "select * from BI.FGVGE limit 10');"
+QUERY = "select * from *** limit 10');"
 
 cursor.execute(QUERY)
 result=cursor.fetchall()
