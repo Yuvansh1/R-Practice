@@ -26,10 +26,10 @@ library(RMySQL)
 #How to make connection with Mysql
 con <- dbConnect(
   MySQL(),
-  user = "yuvansh",
-  password = "yuvansh123",
-  dbname = "dealerEngine_prod",
-  host = "13.126.177.49"
+  user = "***",
+  password = "***",
+  dbname = "****",
+  host = "***"
 )
 
 
@@ -38,14 +38,7 @@ con <- dbConnect(
 dp_data <- dbGetQuery(
   con,
   statement = paste(
-    "Select lead_id,make,model,variant,DP from
-    (select oo.lead_id,make,model,variant,fk_app_auction,
-    count(distinct case when dealer_type = 'External' then dealer_code end) as DP
-    from orders  oo
-    left join BI.Centre_List cl on cl.Centre_ID = oo.store_id
-    left join app_bid bd on bd.carId = oo.car_id
-    left join dealer dl on dl.id = bd.fk_dealer_id
-    where cl.region = 'HYD' and date(bought_at) >= '2018-07-01' group by 5 order by 5 desc)gg group by 1",
+    "Select * from table",
     sep = ""
   )
   )
